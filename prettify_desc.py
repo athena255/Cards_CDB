@@ -3,10 +3,12 @@
 # Downloads the cards database (cards.cdb) from ProjectIgnis
 # Modifies the downloaded cards.cdb to make the card descriptions readable:
 #   Inserts a blank line (2 newlines) after each sentence
-#   Inserts a newline followed by an indent after a semicolon or colon
+#   Inserts a newline followed by an indent after a semicolon, colon, or an independent clause
 # Creates the modified cards.cdb in the current directory
 
-import re, sqlite3, requests
+import os, re, sqlite3, requests
+
+OUTPUT_DIR = 'Cards_CDB'
 
 CARDS_CDB_URL = 'https://github.com/ProjectIgnis/DeltaUtopia/raw/master/cards.cdb'
 
@@ -14,7 +16,7 @@ CARDS_CDB_URL = 'https://github.com/ProjectIgnis/DeltaUtopia/raw/master/cards.cd
 pat_newsent = re.compile(r'(\w{2,}\S?\. )(\S?[A-Z])')
 # Pattern that matches a semi-colon or colon
 pat_semi = re.compile(r'(\S[;:] )(\S)')
-# Pattern that matches ', ' + FANBOYS
+# Pattern that matches ', ' + and/then
 pat_linking = re.compile(r'(\w+ \w+, )(then|and)')
 
 BLANK_LINE = r'\1\r\n\r\n\2'
@@ -22,11 +24,16 @@ NEWLINE_INDENT = r'\1\r\n    \2'
 
 # Download the database
 r = requests.get(CARDS_CDB_URL)
-with open('cards.cdb', 'wb') as f:
+try:
+    os.makedirs(OUTPUT_DIR)
+except FileExistsError:
+    pass
+
+with open(f'{OUTPUT_DIR}/cards.cdb', 'wb') as f:
     f.write(r.content)
 
 # Connect to the database
-conn = sqlite3.connect('cards.cdb')
+conn = sqlite3.connect(f'{OUTPUT_DIR}/cards.cdb')
 c = conn.cursor()
 
 # Retrieve all the descriptions of the cards
