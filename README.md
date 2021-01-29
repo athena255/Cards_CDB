@@ -17,4 +17,4 @@ python prettify_desc.py
 2. In EDOPro, change the language to `Cards_CDB`
 
 <img src="https://user-images.githubusercontent.com/14916525/106236061-12b3e680-61ca-11eb-8615-a364e29355dc.PNG" style="width: 50%; height: 50%"/>
- ![after](https://user-images.githubusercontent.com/14916525/106236064-147daa00-61ca-11eb-87e6-90c24510de14.PNG "after")
+<img src="https://user-images.githubusercontent.com/14916525/106236064-147daa00-61ca-11eb-87e6-90c24510de14.PNG" style="width: 50%; height: 50%"/>
