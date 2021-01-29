@@ -16,4 +16,4 @@ python prettify_desc.py
 1. Copy the generated `Cards_CDB` folder into your `ProjectIgnis/config/languages` folder
 2. In EDOPro, change the language to `Cards_CDB`
 
-![before](https://user-images.githubusercontent.com/14916525/106236061-12b3e680-61ca-11eb-8615-a364e29355dc.PNG)![after](https://user-images.githubusercontent.com/14916525/106236064-147daa00-61ca-11eb-87e6-90c24510de14.PNG)
+![before](https://user-images.githubusercontent.com/14916525/106236061-12b3e680-61ca-11eb-8615-a364e29355dc.PNG "before") ![after](https://user-images.githubusercontent.com/14916525/106236064-147daa00-61ca-11eb-87e6-90c24510de14.PNG "after")
