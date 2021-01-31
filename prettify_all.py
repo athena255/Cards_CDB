@@ -10,11 +10,11 @@ import os, re, sqlite3
 UTOPIA_URL = 'https://github.com/ProjectIgnis/DeltaUtopia.git'
 UTOPIA_DIR = 'DeltaUtopia'
 # Pattern that matches a new sentence
-pat_newsent = re.compile(r'(\w{2,}\S?\. )(\S?[A-Z])')
+pat_newsent = re.compile(r'(\w{2,}\S?\.)\S? ?(\S+ \S+ \S+)')
 # Pattern that matches a semi-colon or colon
-pat_semi = re.compile(r'(\S[;:]\s?)(\S)')
+pat_semi = re.compile(r'( \S+ \S+[;:]\s?)(\S+ \S+ )')
 # Pattern that matches ', ' + and/then
-pat_linking = re.compile(r'(\w+ \w+,\s?)(then|and)')
+pat_linking = re.compile(r'(\w+ \w+ \S+,\s?)(then|and|also|or) (\S+ \S+ \S+)')
 
 BLANK_LINE = r'\1\r\n\r\n\2'
 NEWLINE_INDENT = r'\1\r\n    \2'
