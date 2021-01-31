@@ -7,6 +7,7 @@
 
 import os, re, sqlite3
 
+UTOPIA_URL = 'https://github.com/ProjectIgnis/DeltaUtopia.git'
 UTOPIA_DIR = 'DeltaUtopia'
 # Pattern that matches a new sentence
 pat_newsent = re.compile(r'(\w{2,}\S?\. )(\S?[A-Z])')
@@ -40,8 +41,14 @@ def modify_desc(cdb_path):
     conn.close()
 
 def main():
+    os.system(f"rm -rf {UTOPIA_DIR}")
+    os.system(f"git clone {UTOPIA_URL} {UTOPIA_DIR}")
     for entry in os.scandir(UTOPIA_DIR):
         if entry.path.endswith(".cdb") and entry.is_file():
+            print(f"[+] Modifying {entry.path}")
             modify_desc(entry.path)
+        else:
+            print(f"[-] Removing {entry.path}")
+            os.system(f"rm -rf {entry.path}")
 
 main()
